@@ -20,6 +20,28 @@ namespace TiendaWeb.Controllers
             return View(db.Productos.ToList());
         }
 
+        public ActionResult AddToCart(int id, Carrito carrito)
+        {
+            Producto producto = db.Productos.Find(id);
+            if (producto.Cantidad > 0)
+            {
+                Producto productoCarrito = carrito.Find(x => x.Id == producto.Id);
+                if (productoCarrito != null)
+                {
+                    productoCarrito.Cantidad++;
+                }
+                else
+                {
+                    productoCarrito = new Producto();
+                    productoCarrito = producto;
+                    productoCarrito.Cantidad = 1;
+                    carrito.Add(productoCarrito);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // GET: Productos/Details/5
         public ActionResult Details(int? id)
         {
