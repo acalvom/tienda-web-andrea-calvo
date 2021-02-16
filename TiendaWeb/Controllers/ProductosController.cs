@@ -13,11 +13,14 @@ namespace TiendaWeb.Controllers
     public class ProductosController : Controller
     {
         private tiendaWeb db = new tiendaWeb();
+        public static List<Producto> productos = new List<Producto>();
 
         // GET: Productos
         public ActionResult Index()
         {
-            return View(db.Productos.ToList());
+            //return View(db.Productos.ToList());
+            productos = db.Productos.ToList();
+            return View(productos);
         }
 
         public ActionResult AddToCart(int id, Carrito carrito)
@@ -37,9 +40,11 @@ namespace TiendaWeb.Controllers
                     productoCarrito.Cantidad = 1;
                     carrito.Add(productoCarrito);
                 }
+                productos.Find(x => x.Id == producto.Id).Cantidad--;
             }
 
-            return RedirectToAction("Index");
+            return View(productos);
+            //return RedirectToAction("Index");
         }
 
         // GET: Productos/Details/5
