@@ -32,7 +32,15 @@
             @Html.DisplayFor(modelItem => item.Precio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
+
+            @if (item.Cantidad == 0)
+            {
+               <p>Sin stock</p>
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

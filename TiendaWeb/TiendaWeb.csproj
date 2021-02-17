@@ -281,7 +281,6 @@
     <Content Include="Views\Productos\Details.cshtml" />
     <Content Include="Views\Productos\Edit.cshtml" />
     <Content Include="Views\Productos\Index.cshtml" />
-    <Content Include="Views\Productos\AddToCart.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

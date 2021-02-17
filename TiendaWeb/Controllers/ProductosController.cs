@@ -31,7 +31,10 @@ namespace TiendaWeb.Controllers
                 Producto productoCarrito = carrito.Find(x => x.Id == producto.Id);
                 if (productoCarrito != null)
                 {
-                    productoCarrito.Cantidad++;
+                    if(producto.Cantidad > productoCarrito.Cantidad)
+                    {
+                        productoCarrito.Cantidad++;
+                    }        
                 }
                 else
                 {
@@ -40,11 +43,8 @@ namespace TiendaWeb.Controllers
                     productoCarrito.Cantidad = 1;
                     carrito.Add(productoCarrito);
                 }
-                productos.Find(x => x.Id == producto.Id).Cantidad--;
             }
-
-            return View(productos);
-            //return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         // GET: Productos/Details/5
@@ -125,7 +125,7 @@ namespace TiendaWeb.Controllers
             }
             Producto producto = db.Productos.Find(id);
             if (producto == null)
-            {
+            { 
                 return HttpNotFound();
             }
             return View(producto);
