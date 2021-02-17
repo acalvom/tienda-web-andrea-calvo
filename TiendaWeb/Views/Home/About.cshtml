@@ -1,7 +1,29 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>TIENDA WEB CON ASP.NET</h2>
 
-<p>Use this area to provide additional information.</p>
+<h3>Práctica desarrollada para la asignatura .NET del Máster de Ingeniería Web (UPM)</h3>
+
+<p>
+    Se tarta de desarollar una aplicación web con ASP.NET que permita crear productos y almacenarlos en una base de datos.
+    Para realizar un pedido con artículos de la tienda el usuario tiene que registarse e iniciar sesión. A continuación.
+    este podrá añadir los artículos al carrito para pasar a la pasterior compra. Cuando esto sucede, el stock de productos
+    de actualiza en la base de datos.
+</p>
+<p>
+    Para el desarrollo de la práctica se ha empleado control de versiones con Git y se ha almacenado el proyecto en un
+    repositorio remoto en GitHub.
+</p>
+<p>
+    En la base de datos se almacenan dos entidades: Producto y Pedido. Por cada producto que se adquiere se crea un pedido
+    asociado al usuario con el que se ha iniciado la sesión y con la fecha en la que se realizó dicho pedido.
+</p>
+<p>
+    Para el concepto de Carrito de compra, se utilizan variables de sesión a través de un ModelBinder que permita hacer
+    persistentes los artículos añadidos al navegar por las pestañas de la aplicación.
+</p>
+<p>
+    Se propone un modelo vista controlador MVC a partir del cual cada vista tiene asociado un controlador concreto. Se ha
+    generado una vista adicional en la que se muestran los pedidos realizado por un usuario registrado.
+</p>
