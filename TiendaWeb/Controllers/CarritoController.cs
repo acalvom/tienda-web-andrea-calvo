@@ -17,6 +17,7 @@ namespace TiendaWeb.Controllers
 
         public ActionResult BuyOrder(Carrito carrito)
         {
+            
             foreach (Producto p in carrito)
             {
                 Producto producto = db.Productos.Find(p.Id);
@@ -30,8 +31,16 @@ namespace TiendaWeb.Controllers
                 {
                     producto.Cantidad = stock;
                 }
+
+                Pedido pedido = new Pedido();
+                pedido.Nombre_Cliente = User.Identity.Name;
+                pedido.Fecha = DateTime.Now;
+                pedido.Id_Producto = producto.Id;
+                pedido.Cantidad = p.Cantidad;
+                db.Pedidos.Add(pedido);
             }
 
+            
             db.SaveChanges();
             carrito.Clear();
             return RedirectToAction("Index", "Productos");

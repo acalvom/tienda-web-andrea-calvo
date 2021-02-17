@@ -14,18 +14,10 @@ namespace TiendaWeb.Models
     
     public partial class Pedido
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pedido()
-        {
-            this.Productos = new HashSet<Producto>();
-        }
-    
         public int Id { get; set; }
         public string Nombre_Cliente { get; set; }
         public System.DateTime Fecha { get; set; }
         public short Cantidad { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Producto> Productos { get; set; }
+        public int Id_Producto { get; set; }
     }
 }

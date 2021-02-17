@@ -8,15 +8,6 @@
   <EntityContainer Name="ModeloTiendaWebStoreContainer">
     <EntitySet Name="Productos" EntityType="ModeloTiendaWeb.Store.Productos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Pedidos" EntityType="ModeloTiendaWeb.Store.Pedidos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PedidoProducto" EntityType="ModeloTiendaWeb.Store.PedidoProducto" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_PedidoProducto_Pedido" Association="ModeloTiendaWeb.Store.FK_PedidoProducto_Pedido">
-      <End Role="Pedido" EntitySet="Pedidos" />
-      <End Role="PedidoProducto" EntitySet="PedidoProducto" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PedidoProducto_Producto" Association="ModeloTiendaWeb.Store.FK_PedidoProducto_Producto">
-      <End Role="Producto" EntitySet="Productos" />
-      <End Role="PedidoProducto" EntitySet="PedidoProducto" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Productos">
     <Key>
@@ -35,39 +26,8 @@
     <Property Name="Nombre_Cliente" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
     <Property Name="Cantidad" Type="smallint" Nullable="false" />
+    <Property Name="Id_Producto" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="PedidoProducto">
-    <Key>
-      <PropertyRef Name="Pedido_Id" />
-      <PropertyRef Name="Productos_Id" />
-    </Key>
-    <Property Name="Pedido_Id" Type="int" Nullable="false" />
-    <Property Name="Productos_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_PedidoProducto_Pedido">
-    <End Role="Pedido" Type="ModeloTiendaWeb.Store.Pedidos" Multiplicity="1" />
-    <End Role="PedidoProducto" Type="ModeloTiendaWeb.Store.PedidoProducto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Pedido">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PedidoProducto">
-        <PropertyRef Name="Pedido_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PedidoProducto_Producto">
-    <End Role="PedidoProducto" Type="ModeloTiendaWeb.Store.PedidoProducto" Multiplicity="*" />
-    <End Role="Producto" Type="ModeloTiendaWeb.Store.Productos" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PedidoProducto">
-        <PropertyRef Name="Productos_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -80,15 +40,10 @@
           <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Cantidad" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="Pedido" Relationship="ModeloTiendaWeb.PedidoProducto" FromRole="Producto" ToRole="Pedido" />
         </EntityType>
         <EntityContainer Name="tiendaWeb" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Productos" EntityType="Self.Producto" />
           <EntitySet Name="Pedidos" EntityType="ModeloTiendaWeb.Pedido" />
-          <AssociationSet Name="PedidoProducto" Association="ModeloTiendaWeb.PedidoProducto">
-            <End Role="Pedido" EntitySet="Pedidos" />
-            <End Role="Producto" EntitySet="Productos" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Pedido">
           <Key>
@@ -98,12 +53,8 @@
           <Property Name="Nombre_Cliente" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Cantidad" Nullable="false" Type="Int16" />
-          <NavigationProperty Name="Productos" Relationship="ModeloTiendaWeb.PedidoProducto" FromRole="Pedido" ToRole="Producto" />
+          <Property Name="Id_Producto" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="PedidoProducto">
-          <End Type="ModeloTiendaWeb.Pedido" Role="Pedido" Multiplicity="*" />
-          <End Type="ModeloTiendaWeb.Producto" Role="Producto" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -127,17 +78,10 @@
           <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PedidoProducto" TypeName="ModeloTiendaWeb.PedidoProducto" StoreEntitySet="PedidoProducto">
-      <EndProperty Name="Pedido">
-        <ScalarProperty Name="Id" ColumnName="Pedido_Id" />
-      </EndProperty>
-      <EndProperty Name="Producto">
-        <ScalarProperty Name="Id" ColumnName="Productos_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
