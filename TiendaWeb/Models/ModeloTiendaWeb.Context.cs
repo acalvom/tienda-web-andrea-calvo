@@ -26,5 +26,6 @@ namespace TiendaWeb.Models
         }
     
         public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Pedido> Pedidos { get; set; }
     }
 }

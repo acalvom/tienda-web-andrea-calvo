@@ -12,20 +12,21 @@ namespace TiendaWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Producto
+    public partial class Pedido
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Producto()
+        public Pedido()
         {
-            this.Pedido = new HashSet<Pedido>();
+            this.Productos = new HashSet<Producto>();
         }
     
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public decimal Precio { get; set; }
+        public string Nombre_Cliente { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public int Id_Producto { get; set; }
         public short Cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 }

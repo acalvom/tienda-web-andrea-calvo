@@ -197,6 +197,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloTiendaWeb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pedido.cs">
+      <DependentUpon>ModeloTiendaWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Producto.cs">
       <DependentUpon>ModeloTiendaWeb.tt</DependentUpon>
     </Compile>
@@ -217,6 +220,7 @@
       <DependentUpon>ModeloTiendaWeb.edmx</DependentUpon>
       <LastGenOutput>ModeloTiendaWeb.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\ModeloTiendaWeb.edmx.sql" />
     <Content Include="Models\ModeloTiendaWeb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloTiendaWeb.edmx</DependentUpon>
