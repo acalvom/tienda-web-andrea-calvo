@@ -23,6 +23,7 @@ namespace TiendaWeb.Controllers
             return View(productos);
         }
 
+        [Authorize]
         public ActionResult AddToCart(int id, Carrito carrito)
         {
             Producto producto = db.Productos.Find(id);
@@ -63,6 +64,7 @@ namespace TiendaWeb.Controllers
         }
 
         // GET: Productos/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -86,6 +88,7 @@ namespace TiendaWeb.Controllers
         }
 
         // GET: Productos/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,6 +119,7 @@ namespace TiendaWeb.Controllers
             return View(producto);
         }
 
+        [Authorize]
         // GET: Productos/Delete/5
         public ActionResult Delete(int? id)
         {

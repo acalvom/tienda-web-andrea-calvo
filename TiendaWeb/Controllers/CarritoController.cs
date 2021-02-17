@@ -10,11 +10,14 @@ namespace TiendaWeb.Controllers
     public class CarritoController : Controller
     {
         private tiendaWeb db = new tiendaWeb();
+
+        [Authorize]
         public ActionResult Index(Carrito carrito)
         {
             return View(carrito);
         }
 
+        [Authorize]
         public ActionResult BuyOrder(Carrito carrito)
         {
             
@@ -40,7 +43,6 @@ namespace TiendaWeb.Controllers
                 db.Pedidos.Add(pedido);
             }
 
-            
             db.SaveChanges();
             carrito.Clear();
             return RedirectToAction("Index", "Productos");
