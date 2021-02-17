@@ -34,7 +34,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre_Cliente" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
-    <Property Name="Id_Producto" Type="int" Nullable="false" />
     <Property Name="Cantidad" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="PedidoProducto">
@@ -98,8 +97,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Cliente" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Id_Producto" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Int16" Nullable="false" />
+          <Property Name="Cantidad" Nullable="false" Type="Int16" />
           <NavigationProperty Name="Productos" Relationship="ModeloTiendaWeb.PedidoProducto" FromRole="Pedido" ToRole="Producto" />
         </EntityType>
         <Association Name="PedidoProducto">
@@ -128,7 +126,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
         </MappingFragment>
       </EntityTypeMapping>
