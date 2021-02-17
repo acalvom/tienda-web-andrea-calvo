@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/17/2021 11:19:17
+-- Date Created: 02/17/2021 12:26:51
 -- Generated from EDMX file: C:\Users\andre\Desktop\MIW\work-space\net-ws\TiendaWeb_AndreaCalvo\TiendaWeb\Models\ModeloTiendaWeb.edmx
 -- --------------------------------------------------
 
@@ -22,11 +22,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Pedidos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pedidos];
-GO
 IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Productos];
+GO
+IF OBJECT_ID(N'[dbo].[Pedidos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pedidos];
 GO
 
 -- --------------------------------------------------
@@ -38,7 +38,8 @@ CREATE TABLE [dbo].[Productos] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
     [Precio] decimal(18,0)  NOT NULL,
-    [Cantidad] smallint  NOT NULL
+    [Cantidad] smallint  NOT NULL,
+    [Imagen] nvarchar(max)  NOT NULL
 );
 GO
 

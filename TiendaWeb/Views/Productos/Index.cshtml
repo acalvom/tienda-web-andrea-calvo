@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Cantidad)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
         <th></th>
     </tr>
 
@@ -35,12 +38,15 @@
 
             @if (item.Cantidad == 0)
             {
-               <p>Sin stock</p>
+                <p>Sin stock</p>
             }
             else
             {
                 @Html.DisplayFor(modelItem => item.Cantidad)
             }
+        </td>
+        <td>
+            <img src=@Html.DisplayFor(modelItem => item.Imagen) width="50" height="50">
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -52,6 +58,6 @@
             }
         </td>
     </tr>
-}
+    }
 
 </table>

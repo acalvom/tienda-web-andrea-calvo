@@ -75,7 +75,7 @@ namespace TiendaWeb.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Precio,Cantidad")] Producto producto)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Precio,Cantidad,Imagen")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace TiendaWeb.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Precio,Cantidad")] Producto producto)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Precio,Cantidad,Imagen")] Producto producto)
         {
             if (ModelState.IsValid)
             {

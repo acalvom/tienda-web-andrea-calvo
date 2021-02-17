@@ -18,5 +18,6 @@ namespace TiendaWeb.Models
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public short Cantidad { get; set; }
+        public string Imagen { get; set; }
     }
 }
