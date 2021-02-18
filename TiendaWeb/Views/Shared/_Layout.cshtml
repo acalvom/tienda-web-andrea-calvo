@@ -28,7 +28,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>
-                        <li>@Html.ActionLink("Pedido", "Index", "Pedido")</li>
+                        <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

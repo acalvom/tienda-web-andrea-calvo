@@ -34,9 +34,16 @@
             @Html.DisplayFor(model => model.Cantidad)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            <img src=@Html.DisplayFor(model => model.Imagen) width="100" height="100">
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
