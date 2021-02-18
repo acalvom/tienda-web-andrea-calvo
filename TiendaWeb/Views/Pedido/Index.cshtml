@@ -4,12 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista de pedidos para @User.Identity.Name</h2>
+@using TiendaWeb.Models;
+
+<h2>Lista de pedidos de @User.Identity.Name</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre_Cliente)
+            <p>Usuario</p>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -18,7 +20,7 @@
             @Html.DisplayNameFor(model => model.Cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Producto)
+            <p>Producto</p>
         </th>
         <th></th>
     </tr>
@@ -35,7 +37,11 @@
             @Html.DisplayFor(modelItem => item.Cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Id_Producto)
+            @{ 
+                tiendaWeb db = new tiendaWeb();
+                Producto p = db.Productos.Find(item.Id_Producto);
+            }
+            @Html.DisplayFor(modelItem => p.Nombre)
         </td>
     </tr>
 }
