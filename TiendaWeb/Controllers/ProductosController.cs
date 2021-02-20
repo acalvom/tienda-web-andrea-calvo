@@ -18,7 +18,6 @@ namespace TiendaWeb.Controllers
         // GET: Productos
         public ActionResult Index()
         {
-            //return View(db.Productos.ToList());
             productos = db.Productos.ToList();
             return View(productos);
         }
