@@ -44,5 +44,17 @@
 </table>
 
 <tr>
+    @{ 
+        decimal total = 0;
+
+        foreach (var item in Model)
+        {
+            total = total + item.Precio;
+        }
+    }
+    <h4><b>TOTAL @total €</b></h4>
+</tr>
+<br /><br />
+<tr>
     @Html.ActionLink("Hacer pedido y comprar", "BuyOrder")
 </tr>

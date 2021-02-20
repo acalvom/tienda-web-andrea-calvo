@@ -41,7 +41,6 @@ namespace TiendaWeb.Controllers
                 pedido.Id_Producto = producto.Id;
                 pedido.Cantidad = p.Cantidad;
                 db.Pedidos.Add(pedido);
-                string nombreProducto = producto.Nombre;
             }
 
             db.SaveChanges();
